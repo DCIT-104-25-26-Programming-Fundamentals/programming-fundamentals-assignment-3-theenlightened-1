@@ -73,5 +73,126 @@
 // =============================================================================
 // YOUR CODE BELOW — remove the // symbols from the scaffold and fill it in
 // =============================================================================
+const readlineSync = require("readline-sync");
 
+function add(a, b) {
+  return a + b;
+}
+
+function subtract(a, b) {
+  return a - b;
+}
+
+function multiply(a, b) {
+  return a * b;
+}
+
+function divide(a, b) {
+  return a / b;
+}
+
+function modulus(a, b) {
+  return a % b;
+}
+
+function exponentiate(a, b) {
+  return a ** b;
+}
+
+function getTwoNumbers() {
+  const first = readlineSync.questionFloat("Enter first number : ");
+  const second = readlineSync.questionFloat("Enter second number: ");
+  return [first, second];
+}
+
+function performAddition() {
+  const numbers = getTwoNumbers();
+  const result = add(numbers[0], numbers[1]);
+  console.log("Result: " + numbers[0] + " + " + numbers[1] + " = " + result.toFixed(2));
+}
+
+function performSubtraction() {
+  const numbers = getTwoNumbers();
+  const result = subtract(numbers[0], numbers[1]);
+  console.log("Result: " + numbers[0] + " - " + numbers[1] + " = " + result.toFixed(2));
+}
+
+function performMultiplication() {
+  const numbers = getTwoNumbers();
+  const result = multiply(numbers[0], numbers[1]);
+  console.log("Result: " + numbers[0] + " * " + numbers[1] + " = " + result.toFixed(2));
+}
+
+function performDivision() {
+  const numbers = getTwoNumbers();
+
+  if (numbers[1] === 0) {
+    console.log("Error: Cannot divide by zero.");
+    return;
+  }
+
+  const result = divide(numbers[0], numbers[1]);
+  console.log("Result: " + numbers[0] + " / " + numbers[1] + " = " + result.toFixed(2));
+}
+
+function performModulus() {
+  const numbers = getTwoNumbers();
+
+  if (numbers[1] === 0) {
+    console.log("Error: Cannot divide by zero.");
+    return;
+  }
+
+  const result = modulus(numbers[0], numbers[1]);
+  console.log("Result: " + numbers[0] + " % " + numbers[1] + " = " + result.toFixed(2));
+}
+
+function performExponentiation() {
+  const numbers = getTwoNumbers();
+  const result = exponentiate(numbers[0], numbers[1]);
+  console.log("Result: " + numbers[0] + " ** " + numbers[1] + " = " + result.toFixed(2));
+}
+
+function showMenu() {
+  console.log("\n============================");
+  console.log("     SIMPLE CALCULATOR");
+  console.log("============================");
+  console.log("1. Addition");
+  console.log("2. Subtraction");
+  console.log("3. Multiplication");
+  console.log("4. Division");
+  console.log("5. Modulus");
+  console.log("6. Exponentiation");
+  console.log("7. Quit");
+}
+
+function main() {
+  let running = true;
+
+  while (running) {
+    showMenu();
+    const choice = readlineSync.questionInt("Select an operation (1-7): ");
+
+    if (choice === 1) {
+      performAddition();
+    } else if (choice === 2) {
+      performSubtraction();
+    } else if (choice === 3) {
+      performMultiplication();
+    } else if (choice === 4) {
+      performDivision();
+    } else if (choice === 5) {
+      performModulus();
+    } else if (choice === 6) {
+      performExponentiation();
+    } else if (choice === 7) {
+      console.log("Goodbye!");
+      running = false;
+    } else {
+      console.log("Error: Invalid choice. Please enter a number from 1 to 7.");
+    }
+  }
+}
+
+main();
 
